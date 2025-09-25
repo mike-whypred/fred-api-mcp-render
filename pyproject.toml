@@ -1,0 +1,11 @@
+[project]
+name = "mcp-fredapi-render"
+version = "0.1.0"
+description = "FRED API MCP Server for Render deployment"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "httpx>=0.28.1",
+    "mcp[cli]>=1.6.0",
+    "python-dotenv>=1.1.0",
+]
