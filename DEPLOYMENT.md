@@ -187,3 +187,4 @@ git push origin main
 - Use Render's environment variables for sensitive data
 - Consider implementing rate limiting for production use
 - Monitor API usage to avoid exceeding FRED API limits
+

@@ -12,3 +12,4 @@ services:
         value: 10000
       - key: FRED_API_KEY
         sync: false
+
