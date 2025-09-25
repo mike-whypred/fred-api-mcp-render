@@ -66,7 +66,7 @@ def save_fred_data(series_id: str, data: dict) -> None:
         print(f"Error saving FRED data: {str(e)}")
 
 @mcp.tool()
-def get_fred_series_observations(
+async def get_fred_series_observations(
     series_id: Annotated[str, Field(description="The id for a series.")],
     realtime_start: Annotated[Optional[str], Field(description="The start of the real-time period. Format: YYYY-MM-DD. Defaults to today's date.")] = None,
     realtime_end: Annotated[Optional[str], Field(description="The end of the real-time period. Format: YYYY-MM-DD. Defaults to today's date.")] = None,
@@ -120,9 +120,8 @@ def get_fred_series_observations(
             "file_type": "json"
         }
         
-        # Use asyncio to run the async function
-        import asyncio
-        data = asyncio.run(make_request(f"{FRED_API_URL}/series/observations", params))
+        # Call the async function directly since we're already in an async context
+        data = await make_request(f"{FRED_API_URL}/series/observations", params)
 
         if not data:
             return f"Error: Failed to fetch data from the FRED API"
